@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="root_vbox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.MachineHistoryFXMLController">
    <children>
       <MenuBar fx:id="fileMenu">
         <menus>
@@ -29,12 +28,12 @@
           </Menu>
         </menus>
       </MenuBar>
-      <SplitPane dividerPositions="0.28645294725956566" VBox.vgrow="ALWAYS">
+      <SplitPane fx:id="history_splitpane" dividerPositions="0.28645294725956566" VBox.vgrow="ALWAYS">
          <items>
-            <ListView fx:id="machineList" SplitPane.resizableWithParent="false" />
-            <ScrollPane prefHeight="710.0" prefWidth="637.0">
+            <ListView fx:id="machineList" onMouseClicked="#listClicked" SplitPane.resizableWithParent="false" />
+            <ScrollPane fx:id="history_scroll_pane" prefHeight="710.0" prefWidth="637.0">
               <content>
-                  <Pane />
+                  <Pane fx:id="history_view_pane" />
               </content>
             </ScrollPane>
          </items>
