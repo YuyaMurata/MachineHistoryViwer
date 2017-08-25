@@ -30,10 +30,13 @@
       </MenuBar>
       <SplitPane fx:id="history_splitpane" dividerPositions="0.28645294725956566" VBox.vgrow="ALWAYS">
          <items>
-            <ListView fx:id="machineList" onMouseClicked="#listClicked" SplitPane.resizableWithParent="false" />
+            <ListView fx:id="machineList" SplitPane.resizableWithParent="false" />
             <ScrollPane fx:id="history_scroll_pane" prefHeight="710.0" prefWidth="637.0">
               <content>
-                  <Pane fx:id="history_view_pane" />
+                  <Pane fx:id="history_view_pane">
+                     <children>
+                        <Label fx:id="history_label" layoutX="47.0" layoutY="28.0" text="Label" textOverrun="CLIP" />
+                     </children></Pane>
               </content>
             </ScrollPane>
          </items>

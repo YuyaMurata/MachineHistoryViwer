@@ -14,7 +14,7 @@ import json.ReadWriteJSON;
  */
 public class ViewerMain {
 	public static void main(String[] args) {
-		String fileName = "sample_machinehistory.json";
+		String fileName = "sample10_syaryo_history_pc200.json";
 		Map map = (new ReadWriteJSON()).read(fileName);
 		
 		System.out.println(map);
