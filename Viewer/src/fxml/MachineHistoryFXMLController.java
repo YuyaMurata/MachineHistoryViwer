@@ -20,6 +20,7 @@ import javafx.scene.control.SplitPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import json.ReadWriteJSON;
+import obj.SyaryoObject;
 
 /**
  *
@@ -40,7 +41,7 @@ public class MachineHistoryFXMLController implements Initializable {
 	@FXML
 	private Pane history_view_pane;
 
-	private Map syaryoMap = new HashMap();
+	private Map<String, SyaryoObject> syaryoMap = new HashMap();
 	@FXML
 	private Label history_label;
 	
@@ -68,15 +69,6 @@ public class MachineHistoryFXMLController implements Initializable {
 	public void machineHistorySelected(){
 		int index = machineList.getSelectionModel().getSelectedIndex();
 		System.out.println( "Selection in the listView is : " + index );
-		history_label.setText(machinePrint((Map)syaryoMap.get(machineList.getItems().get(index))));
-	}
-	
-	public String machinePrint(Map map){
-		StringBuilder sb = new StringBuilder();
-		sb.append(map.get("name")+"\n");
-		sb.append(map.get("category")+"\n");
-		sb.append(map.get("komtrax")+"\n");
-		
-		return sb.toString();
+		history_label.setText(syaryoMap.get(machineList.getItems().get(index)).dump());
 	}
 }

@@ -6,12 +6,16 @@
 package json;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.util.Map;
+import obj.SyaryoObject;
 
 /**
  *
@@ -19,9 +23,13 @@ import java.util.Map;
  */
 public class ReadWriteJSON {
 	public Map read(String fileName){
-		try (JsonReader reader = new JsonReader(new FileReader(new File(fileName)))) {
+		try (JsonReader reader = new JsonReader(new InputStreamReader(new FileInputStream(new File(fileName))))) {
+			Type syaryoMapType = new TypeToken<Map<String, SyaryoObject>>(){}.getType();
+			
 			Gson gson = new Gson();
-			return gson.fromJson(reader, Map.class);
+			while(reader.hasNext()){
+				return gson.fromJson(reader, syaryoMapType);
+			}
 		} catch (FileNotFoundException ex) {
 		} catch (IOException ex) {
 		}
