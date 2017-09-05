@@ -16,10 +16,10 @@ import java.util.TreeMap;
  */
 public class SyaryoObject {
 
-	String name;
-	String category;
-	int komtrax = 0;
-	Map<String, Object> map = new LinkedHashMap();
+	public String name;
+	public String category;
+	public int komtrax = 0;
+	public Map<String, Object> map = new LinkedHashMap();
 
 	public SyaryoObject(String kisy, String type, String kiban, String category, String kmt, String kmtp) {
 		this.name = kisy + "-" + type + "-" + kiban;
@@ -151,6 +151,10 @@ public class SyaryoObject {
 	public String getName2() {
 		return name.split("-")[0] + "-" + name.split("-")[2];
 	}
+        
+        public String getType() {
+		return name.split("-")[1];
+	}
 
 	public Integer getKomtrax() {
 		return komtrax;
@@ -181,7 +185,7 @@ public class SyaryoObject {
 	}
 
 	public Map getSMR() {
-		return (Map) map.get("smr");
+		return (Map) map.get("SMR");
 	}
 
 	public Map getOwner() {
@@ -191,7 +195,11 @@ public class SyaryoObject {
 	public Map getHistory() {
 		return (Map) map.get("経歴");
 	}
-
+        
+        public String getPrice() {
+		return (String) map.get("価格");
+	}
+        
 	public Map getCountry() {
 		return (Map) map.get("国");
 	}
@@ -203,31 +211,32 @@ public class SyaryoObject {
 		sb.append("category:" + "" + "\n");
 		sb.append("komtrax:" + getKomtrax() + "\n");
 
-		sb.append("history:\n");
+		sb.append("history:");
 		if (getBorn() != null) {
-			sb.append("\t" + getBorn() + ":製造\n");
+			sb.append("\n\t" + "製造:" + getBorn());
 		}
 
 		if (getNew() != null) {
-			sb.append("\t" + getNew() + ":新車\n");
+			sb.append("\n\t" + "新車:" + getNew());
 		}
 
 		if (getUsed() != null) {
-			sb.append("\t" + getUsed() + ":中古\n");
+			sb.append("\n\t" + "中古:" + getUsed());
 		}
 
 		if (getDead() != null) {
-			sb.append("\t" + getDead() + ":廃車\n");
+			sb.append("\n\t" + "廃車:" + getDead());
 		}
 
 		if (getLast() != null) {
-			sb.append("\t" + getLast() + ":最終更新日\n");
+			sb.append("\n\t" + "最終更新日:"+getLast());
 		}
 
 		//Owner
-		sb.append("owner:\n");
+		sb.append("\nQwner:\n");
 		sb.append("\t" + getOwner() + "\n");
-
+                
+                sb.append("History:\n");
 		if (getHistory() != null) {
 			sb.append(getHistory() + "\n");
 		}
